@@ -1,0 +1,48 @@
+# Backend (.NET)
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.db
+*.dbproj.user
+*.mdf
+*.ldf
+*.ncrunchproject
+*.ncrunchsolution
+packages/
+.vs/
+.vscode/
+.idea/
+*.user
+*.userprefs
+*.suo
+*.sln.iml
+appsettings.*.json
+
+# Frontend (Angular)
+node_modules/
+dist/
+build/
+.angular/
+*.log
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+.env
+.env.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.tmp
+*.temp
