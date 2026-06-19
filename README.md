@@ -84,6 +84,24 @@ dotnet ef migrations add MigrationName
 dotnet ef database update
 ```
 
+## Development Workflow
+
+This project uses **Git Flow** branching model. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
+- Creating feature branches
+- Making pull requests
+- Release and hotfix procedures
+- Commit message conventions
+
+**Quick start:**
+```bash
+# Create a feature branch
+git checkout develop
+git checkout -b feature/your-feature-name
+
+# After changes, push and create a PR to develop
+git push origin feature/your-feature-name
+```
+
 ## License
 
 This project is open source and available under the MIT License.
