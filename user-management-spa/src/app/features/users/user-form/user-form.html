@@ -1,0 +1,89 @@
+<div style="padding: 20px; max-width: 500px">
+  <h2>Add New User</h2>
+
+  <div
+    style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6"
+  >
+    <form
+      [formGroup]="userForm"
+      (ngSubmit)="onSubmit()"
+      style="display: flex; flex-direction: column; gap: 15px"
+    >
+      <div>
+        <label style="display: block; font-weight: bold; margin-bottom: 5px">Name</label>
+        <input
+          type="text"
+          formControlName="name"
+          style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px"
+        />
+        <small
+          *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+          style="color: red"
+          >Name is required.</small
+        >
+      </div>
+
+      <div>
+        <label style="display: block; font-weight: bold; margin-bottom: 5px">Email</label>
+        <input
+          type="email"
+          formControlName="email"
+          style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px"
+        />
+        <small
+          *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+          style="color: red"
+          >Enter a valid email.</small
+        >
+      </div>
+
+      <div>
+        <label style="display: block; font-weight: bold; margin-bottom: 5px">Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px"
+        />
+        <small
+          *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched"
+          style="color: red"
+          >Password must be at least 6 characters.</small
+        >
+      </div>
+
+      <p *ngIf="errorMessage" style="color: red; margin: 0">{{ errorMessage }}</p>
+
+      <div style="display: flex; gap: 10px; margin-top: 10px">
+        <button
+          type="submit"
+          style="
+            background-color: #198754;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 1;
+          "
+        >
+          Save User
+        </button>
+        <button
+          type="button"
+          routerLink="/users"
+          style="
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 1;
+          "
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

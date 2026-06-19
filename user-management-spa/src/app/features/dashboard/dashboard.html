@@ -1,0 +1,122 @@
+<div style="padding: 20px">
+  <h1>Welcome back, {{ currentUser()?.name }}! 👋</h1>
+  <p style="color: #666">Here is an overview of your application today.</p>
+
+  <div style="display: flex; gap: 30px; margin-top: 30px; align-items: flex-start">
+    <div
+      style="
+        flex: 1;
+        max-width: 300px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      "
+    >
+      <h3 style="margin-top: 0; color: #495057">Total Registered Users</h3>
+      <p style="font-size: 48px; font-weight: bold; color: #0d6efd; margin: 10px 0">
+        {{ totalUsers() }}
+      </p>
+      <a routerLink="/users" style="text-decoration: none; color: #0d6efd; font-weight: bold">
+        View Directory →
+      </a>
+    </div>
+
+    <div style="flex: 3; display: flex; flex-direction: column; width: 100%">
+      <style>
+        .catalog-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0 0 20px 0; /* Removed top margin since it aligns with the stats card */
+          border-bottom: 2px solid #e5e7eb;
+          padding-bottom: 12px;
+        }
+
+        .product-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 24px;
+        }
+
+        .product-card {
+          background: #ffffff;
+          border: 1px solid #f3f4f6;
+          border-radius: 12px;
+          padding: 24px;
+          transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .product-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+          border-color: #e5e7eb;
+        }
+
+        .product-title {
+          font-size: 18px;
+          font-weight: 700;
+          color: #111827;
+          margin-bottom: 8px;
+        }
+
+        .product-price {
+          font-size: 22px;
+          font-weight: 800;
+          color: #10b981;
+          margin-bottom: 12px;
+        }
+
+        .product-desc {
+          color: #6b7280;
+          font-size: 14px;
+          line-height: 1.5;
+        }
+
+        .empty-state {
+          grid-column: 1 / -1;
+          text-align: center;
+          padding: 40px;
+          background: #f9fafb;
+          border-radius: 12px;
+          border: 2px dashed #d1d5db;
+          color: #6b7280;
+        }
+      </style>
+
+      <div class="catalog-header">
+        <h2 style="margin: 0; color: #1f2937; font-weight: 700">Product Catalog</h2>
+        <button
+          routerLink="/products/add"
+          class="btn btn-primary"
+          style="background-color: #10b981; border: none; padding: 10px 20px"
+        >
+          + Add Product
+        </button>
+      </div>
+
+      <div class="product-grid" [@listAnimation]="productService.products().length">
+        <div class="product-card" *ngFor="let product of productService.products()">
+          <div>
+            <h4 class="product-title">{{ product.name }}</h4>
+            <div class="product-price">${{ product.price.toFixed(2) }}</div>
+            <p class="product-desc">
+              {{ product.description || 'No description provided for this item.' }}
+            </p>
+          </div>
+        </div>
+
+        <div class="empty-state" *ngIf="productService.products().length === 0">
+          <h3 style="color: #374151; margin-bottom: 8px">No Products Found</h3>
+          <p>Your database is currently empty. Click "Add Product" to create your first listing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
